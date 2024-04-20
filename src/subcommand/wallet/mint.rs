@@ -58,6 +58,7 @@ impl Mint {
       destination.script_pubkey().dust_value().to_sat()
     );
 
+
     let runestone = Runestone {
       mint: Some(id),
       ..default()
@@ -70,6 +71,7 @@ impl Mint {
       "runestone greater than maximum OP_RETURN size: {} > 82",
       script_pubkey.len()
     );
+
 
     let unfunded_transaction = Transaction {
       version: 2,

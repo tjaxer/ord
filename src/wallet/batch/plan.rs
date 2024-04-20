@@ -134,8 +134,24 @@ impl Plan {
         vout: commit_vout.try_into().unwrap(),
       }])?;
 
+      println!("------ signed_commit_tx ------");
+      println!("{}",  hex::encode(&signed_commit_tx));
+      println!("------ signed_reveal_tx ------");
+      println!("{}",hex::encode(&signed_reveal_tx));
+
       let commit = consensus::encode::deserialize::<Transaction>(&signed_commit_tx)?;
       let reveal = consensus::encode::deserialize::<Transaction>(&signed_reveal_tx)?;
+
+
+
+//       return {
+//       Ok(null),
+//       Err(err) => {
+//                 return Err(anyhow!(
+//               "My error"
+//             ))
+//               }
+//       }
 
       wallet.save_etching(
         &rune_info.rune.rune,

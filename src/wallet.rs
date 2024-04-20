@@ -353,6 +353,10 @@ impl Wallet {
   }
 
   pub(crate) fn send_etching(&self, rune: Rune, entry: &EtchingEntry) -> Result<batch::Output> {
+
+        println!("------ signed_reveal_tx ------");
+        println!("{}",hex::encode(consensus::encode::serialize(&entry.reveal)));
+
     match self.bitcoin_client().send_raw_transaction(&entry.reveal) {
       Ok(txid) => txid,
       Err(err) => {
